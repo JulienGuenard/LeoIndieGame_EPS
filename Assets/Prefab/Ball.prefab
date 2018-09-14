@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114511286605060824}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  fireLenght: 30
+  biggerScale: 0.3
+  fire: {fileID: 1057537354168772, guid: 8e73be0dcba36a447b5beb4edcd99a2e, type: 2}
 --- !u!212 &212065332163173804
 SpriteRenderer:
   m_ObjectHideFlags: 1

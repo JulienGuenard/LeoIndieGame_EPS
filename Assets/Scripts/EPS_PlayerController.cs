@@ -19,7 +19,7 @@ public class EPS_PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Ball")
+        if (col.tag == "Ball" || col.tag == "Fire")
         {
             EPS_GameManager.Instance.Lose();
         }

@@ -11,6 +11,11 @@ public class EPS_GameManager : MonoBehaviour {
     Image countdownBlackScreen;
     EPS_PlayerController playerController;
 
+    public int countdownNumbers;
+    public float countdownDelayBeforeStartCountdown;
+    public float countdownDelayBetweenNumber;
+    public float countdownDelayAfterCountdown;
+
     void Awake ()
     {
         Instance = this;
@@ -31,16 +36,16 @@ public void StartGame()
         countdownBlackScreen.enabled = true;
         playerController.enabled = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(countdownDelayBeforeStartCountdown);
 
-        for (int i = 5; i > -1; i--)
+        for (int i = countdownNumbers; i > -1; i--)
         {
             countdownText.text = i.ToString();
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(countdownDelayBetweenNumber);
         }
         countdownText.text = "Go!";
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(countdownDelayAfterCountdown);
 
         countdownText.GetComponentInParent<Image>().gameObject.SetActive(false);
         playerController.enabled = true;
