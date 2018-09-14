@@ -36,6 +36,7 @@ public class EPS_ScoreManager : MonoBehaviour {
             return;
 
             ballDodgeCounterSlider.value++;
+        EPS_DifficultyManager.Instance.DifficultyGrow(ballDodgeCounterSlider.value);
         ChangeText();
         if (ballDodgeCounterSlider.value == maxScoreToWin)
             EPS_GameManager.Instance.Win();

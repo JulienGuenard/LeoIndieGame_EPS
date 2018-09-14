@@ -6,7 +6,7 @@ public class EPS_EnemyBehaviour : MonoBehaviour {
 
     Rigidbody2D rigidbody;
     public GameObject ball;
-    public float ballApparitionDelay;
+    public float ballSpawnDelay;
     public float ballShotDelay;
 
 	void Awake ()
@@ -17,8 +17,8 @@ public class EPS_EnemyBehaviour : MonoBehaviour {
 
     IEnumerator Shot()
     {
-        yield return new WaitForSeconds(ballApparitionDelay);
-        NewBall();
+        yield return new WaitForSeconds(EPS_DifficultyManager.Instance.ballSpawnDelay);
+        BallSpawn();
         yield return new WaitForSeconds(ballShotDelay);
         rigidbody.velocity = new Vector2(0, 2);
         yield return new WaitForSeconds(0.1f);
@@ -29,7 +29,7 @@ public class EPS_EnemyBehaviour : MonoBehaviour {
 
     }
 
-    void NewBall()
+    void BallSpawn()
     {
         GameObject obj = (GameObject)Instantiate(ball, transform.position + new Vector3(0, 0.25f,0), Quaternion.identity);
     }
