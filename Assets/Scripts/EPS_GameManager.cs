@@ -57,7 +57,7 @@ public void StartGame()
 
         countdownText.GetComponentInParent<Image>().gameObject.SetActive(false);
         playerController.enabled = true;
-        GameObject newShooter = (GameObject)Instantiate(enemy, new Vector3(-0.1f, -2, 0), Quaternion.Euler(0, 0, 270));
+        GameObject newShooter = (GameObject)Instantiate(enemy, new Vector3(-0.1f, -2, 0), Quaternion.Euler(0, 0, 0));
     }
 
     public void Win()
