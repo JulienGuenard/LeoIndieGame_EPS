@@ -30,6 +30,14 @@ public class EPS_BallBehaviour : MonoBehaviour {
         }
     }
 
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.tag == "Goal")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     IEnumerator TurnOnHimself()
     {
         yield return new WaitForEndOfFrame();
@@ -40,7 +48,7 @@ public class EPS_BallBehaviour : MonoBehaviour {
 	void Move ()
     {
         StartCoroutine(TurnOnHimself());
-        rigidbody.velocity = new Vector2(Random.Range(-0.2f,0.2f), EPS_DifficultyManager.Instance.ballSpeed);
+        rigidbody.velocity = new Vector2(Random.Range(-0.2f,0.2f) * EPS_DifficultyManager.Instance.ballSpeed, EPS_DifficultyManager.Instance.ballSpeed);
     }
 
     IEnumerator Burn()

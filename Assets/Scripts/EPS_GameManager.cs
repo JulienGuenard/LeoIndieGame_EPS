@@ -9,6 +9,10 @@ public class EPS_GameManager : MonoBehaviour {
     public GameObject enemy;
     Text countdownText;
     Image countdownBlackScreen;
+    Image winScreen;
+    Text winScreenText;
+    Image loseScreen;
+    Text loseScreenText;
     EPS_PlayerController playerController;
 
     public int countdownNumbers;
@@ -21,6 +25,10 @@ public class EPS_GameManager : MonoBehaviour {
         Instance = this;
         countdownText = GameObject.Find("CountdownScreen/Text").GetComponent<Text>();
         countdownBlackScreen = GameObject.Find("CountdownScreen").GetComponent<Image>();
+        winScreen = GameObject.Find("WinScreen").GetComponent<Image>();
+        winScreenText = GameObject.Find("WinScreen/Text").GetComponent<Text>();
+        loseScreen = GameObject.Find("LoseScreen").GetComponent<Image>();
+        loseScreenText = GameObject.Find("LoseScreen/Text").GetComponent<Text>();
         playerController = GameObject.Find("Player").GetComponent<EPS_PlayerController>();
         StartGame();
     }
@@ -54,11 +62,29 @@ public void StartGame()
 
     public void Win()
     {
-
+        winScreen.enabled = true;
+        winScreenText.enabled = true;
+        EndGame();
     }
 
     public void Lose()
     {
+        loseScreen.enabled = true;
+        loseScreenText.enabled = true;
+        EndGame();
+    }
 
+    void EndGame()
+    {
+        Destroy(playerController.gameObject);
+        foreach (EPS_EnemyBehaviour obj in GameObject.FindObjectsOfType<EPS_EnemyBehaviour>())
+        {
+            Destroy(obj.gameObject);
+        }
+
+        foreach (EPS_BallBehaviour obj in GameObject.FindObjectsOfType<EPS_BallBehaviour>())
+        {
+            Destroy(obj.gameObject);
+        }
     }
 }
